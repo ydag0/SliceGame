@@ -23,25 +23,20 @@ public class Slicer : MonoBehaviour
     public void SliceMe(GameObject objectToSlice)
     {
         print("Slicing: " + objectToSlice.name);
-        //cuttedAreaMaterial.color = GameSettings.Instance.settings.areaColors.GetRandomItem();
-
         slicedHull = objectToSlice.Slice(objectToSlice.transform.position, objectToSlice.transform.forward, cuttedAreaMaterial);
         if (slicedHull == null)
             return;
         upperPart = slicedHull.CreateUpperHull(objectToSlice, cuttedAreaMaterial);
-        
         lowerPart= slicedHull.CreateLowerHull(objectToSlice, cuttedAreaMaterial);
         Destroy(objectToSlice);
-        AddPhysicAndForce();
 
+        AddPhysicAndForce();
     }
     void AddPhysicAndForce()
     {
         Rigidbody tempRb;
         Renderer tempRend;
         //upper part
-        
-        //upperPart.GetComponent<MeshRenderer>().materials[upperPart.GetComponent<MeshRenderer>().materials.Length-1].color= GameSettings.Instance.settings.areaColors.GetRandomItem();
         //change color of the last material on the part(cutted area)
         tempRend = upperPart.GetComponent<Renderer>();
         tempRend.materials[tempRend.materials.Length - 1].color = GameSettings.Instance.settings.areaColors.GetRandomItem();
