@@ -17,9 +17,9 @@ public class SlicableCollisions : MonoBehaviour
     {
         if (collision.collider.CompareTag(Tags.knifeTag) && !sliced)//&& collision.collider is BoxCollider)
         {
-            if (collision.collider is BoxCollider)
+            if (collision.collider is BoxCollider && GameSettings.Instance.settings.flipBack)
                 KnifeMovement.Instance.GoBackJump();
-            else if (collision.collider is CapsuleCollider)
+            else if(collision.collider is CapsuleCollider)
             {
                 Slicer.Instance.SliceMe(this.gameObject);
                 sliced = true;

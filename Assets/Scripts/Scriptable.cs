@@ -16,6 +16,7 @@ public class Scriptable : ScriptableObject
     public float torquePower;
     public Vector3 torqueVector;
     public ForceMode torqueForceType;
+    public bool flipBack;
     [Header("Object Slice Settings")]
     public float forcePowerForParts;
     public Material sliceAreaMaterial;
